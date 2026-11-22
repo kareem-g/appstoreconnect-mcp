@@ -1,0 +1,16 @@
+[Unit]
+Description=App Store Connect MCP server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/appstoreconnect
+EnvironmentFile=/opt/appstoreconnect/.env
+ExecStart=/usr/bin/python3 /opt/appstoreconnect/server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
